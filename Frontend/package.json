@@ -20,7 +20,7 @@
     "electron": "^7.1.3"
   },
   "dependencies": {
-    "spotify-sdk": "^1.0.0-beta2",
+    "passport-spotify": "^1.1.0",
     "spotify-web-api-js": "^1.2.0"
   }
 }
