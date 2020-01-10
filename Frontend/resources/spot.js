@@ -1,8 +1,11 @@
 var spotifyApi = new SpotifyWebApi();
+var songView = document.getElementById("Music");
+var accessToken = "";
 const clientId = 'dc9dbbb0da88417b9e2da982fb163709';
 const clientSec = '463b923f1e8d4992ba595089a8222b33';
 const redirectUri = 'http://localhost:8888/callback';
 const scopes = ['streaming user-follow-modify user-follow-read playlist-read-private user-library-modify user-library-read playlist-modify-public user-read-playback-state'];
+var songs = [];
 
 function login(callback) {
   function getLoginURL() {
@@ -49,11 +52,28 @@ document.getElementById('login').addEventListener('click', function() {
   login(function(accessToken) {
       getUserData(accessToken)
           .then(function(response) {
+              document.getElementById('login').hidden = true 
               spotifyApi.setAccessToken(accessToken);
+              spotifyApi.GetMySavedTracks({}, function(err, data){
+                  if(err) console.error(err);
+                  else {
+                    var newSong = "", songName = "", songURI = "", i = 0;      
+                    data.items.foreach(track => {
+                        newSong = document.createElement("li");
+                        songName = track.name;
+                        songURI = track.uri;
+                        newSong.appendChild(document.createTextNode(songName));
+                        songView.appendChild(newSong);
+                        newSong.classList.add("song");
+                        songs[i] = songURI;
+                        i++;
+                    })
+                }
+              })
           });
       });
 });
 
 
-spotifyApi 
+
 
