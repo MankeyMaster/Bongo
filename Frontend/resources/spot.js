@@ -65,6 +65,7 @@ document.getElementById('login').addEventListener('click', function() {
                         newSong.appendChild(document.createTextNode(songName));
                         songView.appendChild(newSong);
                         newSong.classList.add("song");
+                        newSong.setAttribute("id", i)
                         songs[i] = songURI;
                         i++;
                     })
