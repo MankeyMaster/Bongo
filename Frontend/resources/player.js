@@ -1,9 +1,10 @@
+window.onload = function(){
 var data = '{"uris":}'
 var device = "";
 window.onSpotifyPlayerAPIReady = () => {
     const player = new Spotify.Player({
       name: 'Web Playback SDK Template',
-      getOAuthToken: cb => { cb(accessToken);
+      getOAuthToken: cb => { cb('BQC0JN-_zZerFVSOJA1CkjK6zFu0aBNGMkyxzy4FiknIX12w6UyhidS8qc-0LwJ1iBvG8ztiRsBOxcq84UOcCzHlp8s1mRwX0EORcUSXMSl3dUa49JqQ4U8dx6VpLnVe5XUtXpXV6VAIWtlyCjtlZ8zIbVxtofo-tS-AZg0FjgQtXP39ijawsec');
       }
 });
 player.on('initialization_error', e => console.error(e));
@@ -41,4 +42,4 @@ function play(device_id) {
    }
   });
 }
-
+}

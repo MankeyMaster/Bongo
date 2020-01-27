@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { app, BrowserWindow } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -17,9 +18,6 @@ function createWindow () {
   
   })
 
-  ipcMain.once('asynchronous-message', (event, arg) => {
-	  win.webContents.send('asynchronous-reply', arg);
-  });
   // and load the index.html of the app.
   win.loadFile('resources/main.html')
 
@@ -59,3 +57,25 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+},{"electron":2}],2:[function(require,module,exports){
+var fs = require('fs')
+var path = require('path')
+
+var pathFile = path.join(__dirname, 'path.txt')
+
+function getElectronPath () {
+  if (fs.existsSync(pathFile)) {
+    var executablePath = fs.readFileSync(pathFile, 'utf-8')
+    if (process.env.ELECTRON_OVERRIDE_DIST_PATH) {
+      return path.join(process.env.ELECTRON_OVERRIDE_DIST_PATH, executablePath)
+    }
+    return path.join(__dirname, 'dist', executablePath)
+  } else {
+    throw new Error('Electron failed to install correctly, please delete node_modules/electron and try installing again')
+  }
+}
+
+module.exports = getElectronPath()
+
+},{"fs":undefined,"path":undefined}]},{},[1]);
