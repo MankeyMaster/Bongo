@@ -5,7 +5,6 @@
 <script>
 (function() { 
 const { ipcRenderer } = require('electron');
-
 var hash = {};
 window.location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
         var spl = kv.indexOf('=');
@@ -14,7 +13,10 @@ window.location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
         console.log('initial hash', hash);
         if (hash.access_token) { 
         ipcRenderer.send('asynchronous-message', JSON.stringify({ type:'access_token', access_token: hash.access_token, expires_in: hash.expires_in || 0 }));
-} })();
+}
+
+})();
+window.close();
 </script>
 </body>
 </html>

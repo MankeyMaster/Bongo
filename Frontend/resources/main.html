@@ -10,13 +10,8 @@
   <link rel="stylesheet" href="./styles.css">
  
   <!-- Driver java script -->
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-<script>
-window.onSpotifyWebPlaybackSDKReady = () => {
+  <script src="./spot.js"></script>
 
-};</script> 
-  <script src="./spot.js" defer></script>  
-	
 </head>
 
 <body>
@@ -28,38 +23,26 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 		  <span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-		  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		  <ul hidden id="Menu" class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Likes</a>
+			  <a class="nav-link" href="#" id="userLikes">Likes</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Playlists</a>
-			</li>
-			<li class="nav-item">
-			  <a class="nav-link" href="#">Follows</a>
+			  <a class="nav-link" href="#" id="userPlaylists">Playlists</a>
 			</li>
 		  </ul>
 		  <form class="form-inline my-2 my lg-0" id="signIn">
 			  <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="login">Sign In</button>
 		  </form>
-		  <form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		  <form hidden class="Search form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" id="textBox" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="button" id="Search">Search</button>
 		  </form>
 		</div>
 	  </nav>
 	<!-- Music -->
-	<ul class="list-group Music">
+	<ul class="list-group" id="Music">
 	</ul>
-	
-	<!-- Players -->
-	<div class="container" style="visibility: hidden">
-		<div class="btn-group" role="group" aria-label="Basic example">
-			<button type="button" class="btn btn-secondary">Previous</button>
-			<button type="button" class="btn btn-secondary">Play</button>
-			<button type="button" class="btn btn-secondary">Next</button>
-		  </div>
-	  </div>
 	<!-- Searched Profile -->
 	
 <script

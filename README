@@ -1,9 +1,8 @@
 TODO:
 Create electron frontend:
 	-Search function for music, use spotify api.
-	-Sign in
-	-Integrate node js
-	-Play, stop, next, previous buttons
+	-Sign in - done
+	-Integrate node js - done
 	-Button to start hook.
 Create node js compatible backend(SQL?)
 	-Make a bank of users, search by user id

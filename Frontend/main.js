@@ -3,7 +3,6 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
@@ -12,7 +11,8 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      plugins: true
     }
   
   })
@@ -20,6 +20,7 @@ function createWindow () {
   ipcMain.once('asynchronous-message', (event, arg) => {
 	  win.webContents.send('asynchronous-reply', arg);
   });
+
   // and load the index.html of the app.
   win.loadFile('resources/main.html')
 
